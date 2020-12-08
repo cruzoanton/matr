@@ -12,9 +12,8 @@ public class Main {
         Scanner scan = new Scanner(System.in);
         String s = scan.nextLine();
         String[] strArr = s.split(" ");   //разделили пробелами для массива
-        //int[] numArr = Arrays.stream(strArr).mapToInt(Integer::parseInt).toArray(); //массив из чисел нужен для определения длинны
-        //Arrays.sort(numArr);
-        int[] counters = new int[strArr.length]; //создаем массив количеств
+        int[] numArr = Arrays.stream(strArr).mapToInt(Integer::parseInt).toArray(); //массив из целых чисел
+        int[] counters = new int[numArr.length]; //создаем массив количеств
         int f = 0;
         for (String str : strArr) {
             char[] ch = str.toCharArray();          //переводим строку в массив чаров
@@ -24,7 +23,10 @@ public class Main {
             }
             counters[f++] = count;                  //готовый массив количеств символов
         }
-        System.out.println(Arrays.toString(counters));
+        Arrays.sort(numArr); //сортировка чисел
+        Arrays.sort(counters); //сортировка счетчиков(количества символов)
+        System.out.println("по возрастанию " + Arrays.toString(numArr));
+        System.out.println("в количествах символов " + Arrays.toString(counters));
 
 
 //
